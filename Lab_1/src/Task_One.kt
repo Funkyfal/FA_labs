@@ -10,7 +10,7 @@ fun P2(t: Double): Double = 0.5 * (3 * t.pow(2) - 1)
 fun P3(t: Double): Double = 0.5 * (5 * t.pow(3) - 3 * t)
 
 // Численное интегрирование на отрезке [a, b] методом трапеций
-fun integrate(func: (Double) -> Double, a: Double, b: Double, n: Int = 1000): Double {
+fun integrateTrapezoid(func: (Double) -> Double, a: Double, b: Double, n: Int = 1000): Double {
     val h = (b - a) / n
     var sum = 0.0
     for (i in 0 until n) {
@@ -24,7 +24,7 @@ fun integrate(func: (Double) -> Double, a: Double, b: Double, n: Int = 1000): Do
 // Коэффициенты Фурье с полиномами Лежандра
 fun fourierCoefficient(func: (Double) -> Double, poly: (Double) -> Double, k: Int, interval: Pair<Double, Double>): Double {
     val (a, b) = interval
-    val integral = integrate({ t -> func(t) * poly(t) }, a, b)
+    val integral = integrateTrapezoid({ t -> func(t) * poly(t) }, a, b)
     return (k + 0.5) * integral
 }
 
