@@ -42,7 +42,7 @@ public class Task_one {
         int iterations = 1;
 
         // Априорная оценка числа итераций
-        int aprioriIterations = (int) Math.ceil(
+        int aprioriIterations = (int) Math.floor(
                 Math.log(epsilon * (1 - alpha) / Math.abs(xNext - xPrev)) / Math.log(alpha)
         ) + 1;
 
